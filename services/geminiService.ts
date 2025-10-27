@@ -1,9 +1,12 @@
-
 import { GoogleGenAI, Modality, Type } from "@google/genai";
 import type { AnimationPrompt, PromptSet } from "../types.ts";
 
-// Assume API_KEY is set in the environment
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+// FIX: The API key must be obtained from `process.env.API_KEY`. `window.aistudio.getApiKey()` is not a valid method. The function is now synchronous.
+// Helper function to get the AI client with the correct API key
+const getAiClient = () => {
+  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+};
+
 
 interface SingleResult {
   imageUrl: string;
@@ -18,6 +21,7 @@ const generateTextAndPromptSet = async (
     productInfo: string,
     seed: number // For variation
 ): Promise<PromptSet> => {
+  const ai = getAiClient();
   const voiceDescription = voice === 'male' ? 'a male' : 'a female';
   const regionDescription = region === 'south' ? 'Southern Vietnamese' : 'Northern Vietnamese';
   const productInfoContext = productInfo 
@@ -89,6 +93,7 @@ const generateSingleResult = async (
   backgroundSuggestion: string,
   productInfo: string
 ): Promise<SingleResult> => {
+  const ai = getAiClient();
   // 1. Generate the promotional image
   const dimensions = aspectRatio === '9:16' ? '1080x1920 pixels' : '1920x1080 pixels';
   
