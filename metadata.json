@@ -1,0 +1,5 @@
+{
+  "name": "AI Product Shot Generator",
+  "description": "An AI-powered tool to create professional product shots by combining a model's face with a product image. It also generates promotional descriptions and video animation prompts.",
+  "requestFramePermissions": []
+}
