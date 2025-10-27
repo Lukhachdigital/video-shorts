@@ -1,6 +1,7 @@
+
 import React, { useState, useRef, useCallback } from 'react';
-import type { ImageData } from '../types';
-import { UploadIcon } from './Icons';
+import type { ImageData } from '../types.ts';
+import { UploadIcon } from './Icons.tsx';
 
 interface ImageUploaderProps {
   title: string;

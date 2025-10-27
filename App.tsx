@@ -1,9 +1,10 @@
+
 import React, { useState, useCallback } from 'react';
-import { ImageUploader } from './components/ImageUploader';
-import { GeneratedContent } from './components/GeneratedContent';
-import { WandIcon } from './components/Icons';
-import { generateAllContent } from './services/geminiService';
-import type { ImageData, GeneratedResult } from './types';
+import { ImageUploader } from './components/ImageUploader.tsx';
+import { GeneratedContent } from './components/GeneratedContent.tsx';
+import { WandIcon } from './components/Icons.tsx';
+import { generateAllContent } from './services/geminiService.ts';
+import type { ImageData, GeneratedResult } from './types.ts';
 
 const OptionGroup: React.FC<{label: string, children: React.ReactNode}> = ({label, children}) => (
     <div className="flex flex-col items-center gap-2">
@@ -15,10 +16,10 @@ const OptionGroup: React.FC<{label: string, children: React.ReactNode}> = ({labe
 const OptionButton: React.FC<{selected: boolean, onClick: () => void, children: React.ReactNode}> = ({selected, onClick, children}) => (
     <button 
         onClick={onClick}
-        className={`px-5 py-2 text-base rounded-lg font-semibold tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500 transform active:translate-y-0.5 ${
+        className={`px-6 py-3 text-lg rounded-lg font-semibold tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500 transform active:translate-y-0.5 ${
             selected 
-            ? 'bg-blue-600 text-white border-b-4 border-blue-800 shadow-lg' 
-            : 'bg-slate-700 text-slate-300 border-b-4 border-slate-800 hover:bg-slate-600 shadow-md'
+            ? 'bg-blue-600 text-white border-b-4 border-blue-800 shadow-xl' 
+            : 'bg-slate-700 text-slate-300 border-b-4 border-slate-800 hover:bg-slate-600 shadow-lg'
         }`}
     >
         {children}
@@ -143,7 +144,7 @@ const App: React.FC = () => {
                        value={productInfo}
                        onChange={(e) => setProductInfo(e.target.value)}
                        placeholder="Ví dụ: Son môi siêu lì, màu đỏ ruby, giữ màu 8 tiếng, chứa vitamin E..."
-                       rows={4}
+                       rows={6}
                        className="w-full bg-slate-900/70 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors resize-y"
                    />
                </div>

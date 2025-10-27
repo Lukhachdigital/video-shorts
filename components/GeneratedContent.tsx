@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
-import { FilmIcon, SparklesIcon, CopyIcon, CheckIcon, SaveIcon } from './Icons';
-import type { PromptSet } from '../types';
+import { FilmIcon, SparklesIcon, CopyIcon, CheckIcon, SaveIcon } from './Icons.tsx';
+import type { PromptSet } from '../types.ts';
 
 interface GeneratedContentProps {
   image: string | null;

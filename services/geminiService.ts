@@ -1,5 +1,6 @@
+
 import { GoogleGenAI, Modality, Type } from "@google/genai";
-import type { AnimationPrompt, PromptSet } from "../types";
+import type { AnimationPrompt, PromptSet } from "../types.ts";
 
 // Assume API_KEY is set in the environment
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
@@ -31,7 +32,7 @@ const generateTextAndPromptSet = async (
 
 IMPORTANT for seed ${seed}: Your response must be COMPLETELY UNIQUE and DIFFERENT from any previous attempts. Create a fresh, new idea for both the description and the camera movement.
 
-1.  **description**: Write a concise promotional description in Vietnamese. The length must be suitable for an 8-second voiceover, approximately 15-25 words. CRITICAL RULE: The description text MUST NOT contain any special characters like hyphens (-), asterisks (*), or quotes (", '). Use simple, plain Vietnamese text only. This description will be the dialogue for the video. ${productInfoContext}
+1.  **description**: Write a concise promotional description in Vietnamese. The length MUST be short, between 15 and 25 words. This is a strict limit for an 8-second voiceover. CRITICAL RULE: The description text MUST NOT contain any special characters like hyphens (-), asterisks (*), quotes (", '), or any other punctuation. Use simple, plain Vietnamese text only. This will be spoken directly by the text-to-speech engine, so clarity is essential. ${productInfoContext}
 
 2.  **animationPrompt**: Build a detailed video prompt as a structured JSON object for a video generation model like VEO 3.1. This prompt must create a vivid and dynamic 8-second TikTok video in an "Outfit Showcase" style, with a special focus on lively and engaging camera movements.
     - The JSON object must contain the following keys: "sceneDescription", "characterAction", "cameraMovement", "lighting", "facialExpression", "videoDuration", and "audioDescription".
